@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 마이바티스 3 Mapper DTD -->
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<!-- mapper태그에는 namespace 속성을 반드시 작성해야 한다 -->
+<!-- 연동될 Dao 인터페이스를 풀네임으로 작성한다 -->
+<mapper namespace="dao.face.DeptDao">
+
+	<!-- id : 추상메소드에 있는 이름과 동일하게 -->
+	<!-- resultType : 추상메소드의 반환타입과 동일하게 -->
+	<!-- parameterType : 추상메소드의 매개변수(파라미터) 타입과 동일하게 -->
+	<select id="selectByDeptno" resultType="dto.Dept" parameterType="int">
+	
+		SELECT * FROM dept
+		WHERE deptno = #{deptno}
+		<!-- ?파라미터 채우는 것과 동일하다 ==  #{deptno} -->
+		
+	</select>
+	
+	<!-- generic<Dept>를 넣어줌 -> List x -> 알아서 List에 넣어주고 param은 없으면 생략 -->
+	<select id="selectAll" resultType="dto.Dept">
+		SELECT * FROM dept
+		ORDER BY deptno
+	</select>
+
+	<select id="selectByDname" resultType="dto.Dept" parameterType="String">
+		SELECT * FROM dept
+		WHERE dname = #{dname}
+		<!-- paramterType을 꼭 맞춰줄 필요 x ->  #{dname} {}안에 어떤 걸 써도 동작하지만 이름을 맞춰주는 것이 편함 -->
+	</select>
+	
+	<select id="selectByDeptDname" resultType="dto.Dept" parameterType="dto.Dept">
+		SELECT * FROM dept
+		WHERE dname = #{dname}
+		<!-- #{dname} == getDname() => parameterType이 dto.Dept이기 때문에 getDname()으로 가져와야만한다-->
+	</select>
+
+	<insert id="insertDept" parameterType="dto.Dept">
+		INSERT INTO dept (deptno, dname, loc)
+		VALUES (#{deptno}, #{dname}, #{loc})
+	</insert>
+
+</mapper>
