@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class Board {
 	
+	//dto Board에 주석 추가
 	private int boardno;
 	private String title;
 	private String userid;
