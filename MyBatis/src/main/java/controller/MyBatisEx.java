@@ -11,7 +11,8 @@ import dto.Dept;
 import mybatis.MyBatisConnectionFactory;
 
 public class MyBatisEx {
-
+	
+	//마이바티스 메인!!
 	public static void main(String[] args) {
 		
 		//SqlSession객체를 생성할 팩토리 객체
