@@ -29,6 +29,7 @@ public class StudyController { //서블릿 대신 역할
 		logger.info("/board/list [GET]");
 		logger.info("/board/list [GET]");
 		logger.info("/board/list [GET]");
+		logger.info("/board/list [GET]");
 	
 		List<Board> list = boardService.getList();
 		
